@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white md:px-14 p-4 max-w-screen-2xl mx-auto text-primary fixed top-0 right-0 left-0">
+      <nav className="bg-white md:px-14 p-4 max-w-screen-2xl mx-auto text-primary fixed top-0 right-0 left-0 shadow-xl">
         <div className="text-lg container mx-auto flex justify-between items-center font-medium">
           <div className="flex space-x-12 items-center">
             <a
@@ -37,9 +37,10 @@ const Navbar = () => {
             <ul className="md:flex space-x-12 hidden">
               {navItems.map(({ link, path }) => (
                 <Link
+                  activeClass="active"
                   spy={true}
                   smooth={true}
-                  offset={100}
+                  offset={-100}
                   key={link}
                   to={path}
                   className="block hover:text-purple-300 cursor-pointer"
@@ -89,9 +90,16 @@ const Navbar = () => {
         }`}
       >
         {navItems.map(({ link, path }) => (
-          <a key={link} to={path} className="block hover:text-gray-300">
+          <Link activeClass="active"
+            spy={true}
+            smooth={true}
+            offset={100} 
+            key={link} 
+            to={path} 
+            onClick={toggleMenu}
+            className="block text-white hover:text-gray-300">
             {link}
-          </a>
+          </Link>
         ))}
       </div>
     </>
