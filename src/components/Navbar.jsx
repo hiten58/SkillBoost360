@@ -9,9 +9,10 @@ import { Link } from "react-scroll";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(isMenuOpen);
-  };
+  function toggleMenu() {
+    setIsMenuOpen(!isMenuOpen);
+    // console.log(isMenuOpen)
+  }
 
   const navItems = [
     { link: "Overview", path: "home" },
@@ -48,6 +49,8 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
+
+          {/* Language and sign UP */}
           <div className="space-x-12 hidden md:flex items-center">
             <a
               href="/"
@@ -80,9 +83,13 @@ const Navbar = () => {
 
       {/* Nav items for mobile devices */}
 
-      <div className={`space-y-4 px-4 pt-5 pb-5 bg-secondary ${isMenuOpen ? "block fixed top-0 right-0 left-0" : "hidden"}`}>
+      <div
+        className={`space-y-4 px-4 pt-36 pb-5 bg-secondary ${
+          isMenuOpen ? "block fixed top-0 right-0 left-0" : "hidden"
+        }`}
+      >
         {navItems.map(({ link, path }) => (
-          <a key={link} href={path} className="block hover:text-purple-300">
+          <a key={link} to={path} className="block hover:text-gray-300">
             {link}
           </a>
         ))}
